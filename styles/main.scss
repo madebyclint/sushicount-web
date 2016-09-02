@@ -1,0 +1,168 @@
+/**
+ *
+ * Sushi Count
+ * by Clint Bush | madebyclint.com
+ *
+ */
+
+/* Imports */
+@import url('http://fonts.googleapis.com/css?family=Sansita+One');
+
+/* Variables */
+$background-gray: #C6CFD6;
+$red: #ce0000;
+$white: #fff;
+$blocks-per-row: 3;
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    >* {
+        box-sizing: inherit;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+/* Modules */
+
+body {
+    background: $background-gray;
+}
+
+.logo-wrapper {
+    background: $red;
+    background: linear-gradient(to bottom, $red 0%, lighten($red, 25%) 100%);
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    border: 2px solid #fff;
+    position: relative;
+    border-radius: 150px;
+    box-shadow: 1px 1px 2px 2px rgba(#003031, .2);
+    transform: rotate(-7deg);
+    .logo {
+        font-family: 'Sansita one', sans-serif;
+        font-size: 48px;
+        line-height: .8;
+        color: #fff;
+        margin: 0;
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-shadow:
+            1px 0px 0 darken($red, 3%),
+            1px 1px 0 darken($red, 3%),
+            0px 1px 0 darken($red, 3%),
+            2px 0px 0 darken($red, 3%),
+            2px 1px 0 darken($red, 3%),
+            2px 2px 0 darken($red, 3%),
+            0px 2px 0 darken($red, 3%),
+            1px 2px 0 darken($red, 3%),
+            -1px 0px 0 darken($red, 3%),
+            -1px -1px 0 darken($red, 3%),
+            0px -1px 0 darken($red, 3%),
+            -2px 0px 0 darken($red, 3%),
+            -2px -1px 0 darken($red, 3%),
+            -2px -2px 0 darken($red, 3%);
+        border: 5px solid #fff;
+        border-radius: 130px;
+        .logo-inner {
+            display: block;
+            position: absolute;
+            top: 46%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.view {
+    display: flex;
+    flex-wrap: wrap;
+    >* {
+        border: 1px solid $red;
+        text-align: center;
+        margin: .2em;
+        width: calc(50% - .8em);
+        min-width: 120px;
+        border-radius: 1em 0;
+        &.theme-red {
+            background: $red;
+            color: $white;
+        }
+        .title {
+            font-size: 3em;
+            text-transform: uppercase;
+        }
+    }
+}
+.restaurants {
+    >* {
+        &:nth-child(3n + 1) {
+            width: calc(100% - 1.2em);
+        }
+    }
+}
+.plates {
+    >* {
+        width: calc(100% - .4em);
+    }
+}
+.count-wrapper {
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+        .subtotal {
+            margin: 0;
+            padding-left: 3rem;
+        }
+    }
+    .title {
+        text-align: right;
+    }
+    .count {
+        margin: 1rem 1rem 0;
+        font-size: 1.4rem;
+        letter-spacing: .3rem;
+        word-wrap: break-word;
+        span {
+            letter-spacing: 0;
+            word-wrap: normal;
+        }
+    }
+    .subtotal {
+        border-top: 1px solid $white;
+    }
+}
+.count-control {
+    >* {
+        background: $white;
+        color: $red;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .count-add {
+        font-size: 2rem;
+        border-radius: 3rem;
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+    }
+    .count-subtract {
+        border-radius: 2rem;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+    }
+}
+

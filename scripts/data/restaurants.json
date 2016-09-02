@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Blue C Sushi",
+        "plates": [
+            {
+                "name": "blue",
+                "color": "blue",
+                "price": "4.99"
+            },
+            {
+                "name": "yellow",
+                "color": "yellow",
+                "price": "3.99"
+            },
+            {
+                "name": "orange",
+                "color": "orange",
+                "price": "2.99"
+            }
+        ]
+    },
+    {
+        "name": "Gengki Sushi",
+        "plates": [
+            {
+                "name": "dark blue",
+                "color": "dark blue",
+                "price": "4.99"
+            },
+            {
+                "name": "red",
+                "color": "red",
+                "price": "3.99"
+            },
+            {
+                "name": "green",
+                "color": "green",
+                "price": "2.99"
+            }
+        ]
+    },
+    {
+        "name": "Moshi Moshi",
+        "plates": [
+            {
+                "name": "teal",
+                "color": "teal",
+                "price": "4.99"
+            },
+            {
+                "name": "purple",
+                "color": "purple",
+                "price": "3.99"
+            },
+            {
+                "name": "gray",
+                "color": "gray",
+                "price": "2.99"
+            }
+        ]
+    },
+    {
+        "name": "Tengu Sushi",
+        "plates": [
+            {
+                "name": "green",
+                "color": "green",
+                "price": "4.99"
+            },
+            {
+                "name": "orange",
+                "color": "orange",
+                "price": "3.99"
+            },
+            {
+                "name": "red",
+                "color": "red",
+                "price": "2.99"
+            }
+        ]
+    }
+]
