@@ -16,7 +16,7 @@ var Restaurants = (function(U) {
             if(private.loaded.indexOf('Plates') >= 0) {
                 Plates.return(thisPlates);
             } else {
-                U.loadScripts('/scripts/', ['controllers/plates.js'], null, function() {
+                U.loadScripts('scripts/', ['controllers/plates.js'], null, function() {
                     Plates.return(thisPlates);
                     private.loaded.push('Plates');
                 });
@@ -45,7 +45,7 @@ var Restaurants = (function(U) {
     };
     private.init = (function() {
         /* Load restaurants.json */
-        U.loadScripts('/scripts/', ['data/restaurants.json'], null, private.addToDom, 'json');
+        U.loadScripts('scripts/', ['data/restaurants.json'], null, private.addToDom, 'json');
     })();
     return public;
 })(Utilities);
