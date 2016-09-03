@@ -94,6 +94,7 @@ body {
         width: calc(50% - .8em);
         min-width: 120px;
         border-radius: 1em 0;
+        position: relative;
         &.theme-red {
             background: $red;
             color: $white;
@@ -101,6 +102,14 @@ body {
         .title {
             font-size: 3em;
             text-transform: uppercase;
+        }
+        .button-edit {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            svg {
+                display: none;
+            }
         }
     }
 }

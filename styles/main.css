@@ -62,13 +62,20 @@ body {
     margin: .2em;
     width: calc(50% - .8em);
     min-width: 120px;
-    border-radius: 1em 0; }
+    border-radius: 1em 0;
+    position: relative; }
     .view > *.theme-red {
       background: #ce0000;
       color: #fff; }
     .view > * .title {
       font-size: 3em;
       text-transform: uppercase; }
+    .view > * .button-edit {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem; }
+      .view > * .button-edit svg {
+        display: none; }
 
 .restaurants > *:nth-child(3n + 1) {
   width: calc(100% - 1.2em); }
