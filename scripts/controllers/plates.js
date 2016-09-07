@@ -81,7 +81,7 @@ var Plates = (function(U) {
                     PlateEdit.return();
                 } else {
                     U.loadScripts('scripts/', ['controllers/plate-edit.js'], null, function() {
-                        PlateEdit.return();
+                        PlateEdit.return(item);
                         private.loaded.push('PlateEdit');
                     });
                 }
