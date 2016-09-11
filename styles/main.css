@@ -80,55 +80,60 @@ body {
 .restaurants > *:nth-child(3n + 1) {
   width: calc(100% - 1.2em); }
 
-.plates > * {
+.plates > *, .plate-edit > * {
   width: calc(100% - .4em); }
 
-.plates .count-wrapper .inner {
+.plates .count-wrapper .inner, .plate-edit .count-wrapper .inner {
   display: flex;
   justify-content: space-between;
   margin: 1rem; }
-  .plates .count-wrapper .inner .subtotal {
+  .plates .count-wrapper .inner .subtotal, .plate-edit .count-wrapper .inner .subtotal {
     margin: 0;
     padding-left: 3rem; }
 
-.plates .count-wrapper .title {
+.plates .count-wrapper .title, .plate-edit .count-wrapper .title {
   text-align: right; }
 
-.plates .count-wrapper .count {
+.plates .count-wrapper .count, .plate-edit .count-wrapper .count {
   margin: 1rem 1rem 0;
   font-size: 1.4rem;
   letter-spacing: .3rem;
   word-wrap: break-word; }
-  .plates .count-wrapper .count span {
+  .plates .count-wrapper .count span, .plate-edit .count-wrapper .count span {
     letter-spacing: 0;
     word-wrap: normal; }
 
-.plates .count-wrapper .subtotal {
+.plates .count-wrapper .subtotal, .plate-edit .count-wrapper .subtotal {
   border-top: 1px solid #fff; }
 
-.plates .count-control > * {
+.plates .count-control > *, .plate-edit .count-control > * {
   background: #fff;
   color: #ce0000;
   display: inline-block;
   vertical-align: middle;
   text-align: center; }
 
-.plates .count-control .count-add {
+.plates .count-control .count-add, .plate-edit .count-control .count-add {
   font-size: 2rem;
   border-radius: 3rem;
   width: 3rem;
   height: 3rem;
   line-height: 3rem; }
 
-.plates .count-control .count-subtract {
+.plates .count-control .count-subtract, .plate-edit .count-control .count-subtract {
   border-radius: 2rem;
   width: 2rem;
   height: 2rem;
   line-height: 2rem; }
 
 .color-options .coloroption-wrapper {
-  display: flex;
-  position: relative; }
+  position: relative;
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+  margin: .25rem; }
+  .color-options .coloroption-wrapper > * {
+    width: 100%; }
   .color-options .coloroption-wrapper input {
     display: none; }
     .color-options .coloroption-wrapper input:checked + label span {
@@ -137,7 +142,8 @@ body {
         content: '\2713'; }
   .color-options .coloroption-wrapper label {
     border-radius: .7rem 0;
-    padding: .5rem; }
+    padding: .5rem;
+    display: block; }
     .color-options .coloroption-wrapper label span {
       color: #fff;
       border-radius: 2rem;

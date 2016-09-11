@@ -92,6 +92,7 @@ var PlateEdit = (function(U) {
         var namefield = document.createElement('input');
         var pricefield = document.createElement('input');
         var colorfield = document.createElement('fieldset');
+        plateform.classList.add('theme-red');
         namefield.type = 'text';
         namefield.value = item.name;
         pricefield.type = 'number';

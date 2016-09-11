@@ -7,9 +7,6 @@
 var Plates = (function(U) {
     var private = {},
         public = {};
-    public.return = function(data) {
-        private.addToDom(data);
-    };
     private.loaded = [];
     private.addToDom = function(data) {
         // TODO: Add array test
@@ -68,15 +65,12 @@ var Plates = (function(U) {
             container.appendChild(newItemWrapper);
 
             $(countAdd).off('click.add').on('click.add', function(e) {
-                e.preventDefault();
                 private.changeCounter.add(this, e, item);
             });
             $(countSubtract).off('click.subtract').on('click.subtract', function(e) {
-                e.preventDefault();
                 private.changeCounter.subtract(this, e, item);
             });
             $(editLink).off('click.edit').on('click.edit', function(e) {
-                e.preventDefault();
                 if(private.loaded.indexOf('PlateEdit') >= 0) {
                     PlateEdit.return();
                 } else {
@@ -127,8 +121,8 @@ var Plates = (function(U) {
             thisSubtotal.html((thisVal * thisPriceVal).toFixed(2));
         }
     };
-    private.init = (function() {
-
-    })();
+    public.init = function(data) {
+        private.addToDom(data);
+    };
     return public;
 })(Utilities);

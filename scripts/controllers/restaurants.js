@@ -11,16 +11,8 @@ var Restaurants = (function(U) {
     private.addToDom = function(data) {
         // TODO: Add array test
         document.getElementById('page').appendChild(private.htmlBuilder(data));
-        $('.restaurants').on('click', 'a', function() {
-            var thisPlates = this.data_plates;
-            if(private.loaded.indexOf('Plates') >= 0) {
-                Plates.return(thisPlates);
-            } else {
-                U.loadScripts('scripts/', ['controllers/plates.js'], null, function() {
-                    Plates.return(thisPlates);
-                    private.loaded.push('Plates');
-                });
-            }
+        $('.restaurants').on('click', 'a', function(e) {
+            Utilities.routeTo('plates', e, this.data_plates);
         });
     };
     private.htmlBuilder = function(items) {
@@ -43,9 +35,9 @@ var Restaurants = (function(U) {
         });
         return container;
     };
-    private.init = (function() {
+    public.init = function() {
         /* Load restaurants.json */
-        U.loadScripts('scripts/', ['data/restaurants.json'], null, private.addToDom, 'json');
-    })();
+        U.loadScripts(['scripts/data/restaurants.json'], null, private.addToDom, 'json', 'Restaurants');
+    };
     return public;
 })(Utilities);

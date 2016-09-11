@@ -120,7 +120,7 @@ body {
         }
     }
 }
-.plates {
+.plates, .plate-edit {
     >* {
         width: calc(100% - .4em);
     }
@@ -176,8 +176,14 @@ body {
 }
 .color-options {
     .coloroption-wrapper {
-        display: flex;
         position: relative;
+        width: auto;
+        display: inline-block;
+        vertical-align: top;
+        margin: .25rem;
+        >* {
+            width: 100%;
+        }
         input {
             display: none;
             &:checked + label {
@@ -192,6 +198,7 @@ body {
         label {
             border-radius: .7rem 0;
             padding: .5rem;
+            display: block;
             span {
                 color: $white;
                 // mix-blend-mode: difference;
