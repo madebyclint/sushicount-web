@@ -41,16 +41,42 @@ var Utilities = {
             }
         });
     },
-    routeTo: function(page, optionalEvent, optionalData) {
+    routeTo: function(optionalPage, optionalEvent, localStorageObj, localStorageProperty) {
+        var hash = window.location.hash;
+        var hashval = hash ? hash.split('/')[0].slice(1) : false;
+        var name = '';
+        var localData = function(key, prop, useHashPropVal) {
+            if(localStorage && localStorage[key]) {
+                var lk = JSON.parse(localStorage[key]);
+                for(var i=0, len=lk.length; i<len; i++) {
+                    name = useHashPropVal ? lk[i].name.replace(/\s/g, '').toLowerCase() : lk[i].name;
+                    if(name === prop) {
+                        console.log('success!!!', lk[i]);
+                        return lk[i].plates;
+                    }
+                    console.log('continue', lk[i]);
+                }
+                return localStorage[key];
+            } else {
+                return null;
+            }
+        };
+        if(hashval && hashval !== 'restaurants') {
+            Utilities.loadView(Utilities.toCamelCase('plates'), 'scripts/controllers/' + 'plates' + '.js', optionalEvent, localData('Restaurants', 'bluecsushi', true));
+            return false;
+        }
         if(optionalEvent) {
             optionalEvent.preventDefault();
         }
-        if(!(page && page !== '')) {
-            page = window.location.hash ? window.location.hash.slice(1) : 'restaurants';
+        if(!(optionalPage && optionalPage !== '')) {
+            // Default to restaurants view
+            page = (window.location.hash ? window.location.hash.slice(1) : 'restaurants').toLowerCase();
+            window.location.hash = page;
+        } else {
+            page = optionalPage.toLowerCase();
+            window.location.hash = page + '/' + optionalEvent.currentTarget.hash.substr(1);
         }
-        page = page.toLowerCase();
-        window.location.hash = page;
-        Utilities.loadView(Utilities.toCamelCase(page), 'scripts/controllers/' + page + '.js', optionalEvent, optionalData);
+        Utilities.loadView(Utilities.toCamelCase(page), 'scripts/controllers/' + page + '.js', optionalEvent, localData(localStorageObj, localStorageProperty));
     },
     storeLocal: function(name, obj) {
         console.log('storing ' + name, obj);

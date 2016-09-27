@@ -12,7 +12,7 @@ var Restaurants = (function(U) {
         // TODO: Add array test
         document.getElementById('page').appendChild(private.htmlBuilder(data));
         $('.restaurants').on('click', 'a', function(e) {
-            Utilities.routeTo('plates', e, this.data_plates);
+            Utilities.routeTo('plates', e, 'Restaurants', 'Blue C Sushi');
         });
     };
     private.htmlBuilder = function(items) {
@@ -22,7 +22,7 @@ var Restaurants = (function(U) {
             var newItemWrapper = document.createElement('a');
             var newItemHeader = document.createElement('h2');
             var newItemDesc = document.createElement('p');
-            newItemWrapper.href = '#' + index;
+            newItemWrapper.href = '#' + item.name.replace(/\s/g, '').toLowerCase();
             newItemWrapper.classList.add('theme-red');
             newItemWrapper.data_plates = item.plates;
             newItemHeader.innerHTML = U.getInitials(item.name, 2);

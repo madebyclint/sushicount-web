@@ -122,6 +122,7 @@ var Plates = (function(U) {
         }
     };
     public.init = function(data) {
+        console.log('plates data', data);
         private.addToDom(data);
     };
     return public;
