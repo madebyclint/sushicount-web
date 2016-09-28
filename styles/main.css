@@ -57,7 +57,7 @@ body {
   display: flex;
   flex-wrap: wrap; }
   .view > * {
-    border: 1px solid #ce0000;
+    border: 5px solid #fff;
     text-align: center;
     margin: .2em;
     width: calc(50% - .8em);
