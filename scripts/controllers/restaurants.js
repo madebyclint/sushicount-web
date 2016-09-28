@@ -12,7 +12,7 @@ var Restaurants = (function(U) {
         // TODO: Add array test
         document.getElementById('page').appendChild(private.htmlBuilder(data));
         $('.restaurants').on('click', 'a', function(e) {
-            Utilities.routeTo('plates', e, 'Restaurants', 'Blue C Sushi');
+            Utilities.routeTo('plates', e, 'Restaurants', this.getAttribute('href').slice(1));
         });
     };
     private.htmlBuilder = function(items) {

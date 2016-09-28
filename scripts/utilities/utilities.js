@@ -42,31 +42,17 @@ var Utilities = {
         });
     },
     routeTo: function(optionalPage, optionalEvent, localStorageObj, localStorageProperty) {
+        console.log('arguments', arguments);
         var hash = window.location.hash;
-        var hashval = hash ? hash.split('/')[0].slice(1) : false;
+        var hasharr = hash ? hash.split('/') : null;
+        var hashval = hasharr ? hasharr[0].slice(1) : false;
         var name = '';
-        var localData = function(key, prop, useHashPropVal) {
-            if(localStorage && localStorage[key]) {
-                var lk = JSON.parse(localStorage[key]);
-                for(var i=0, len=lk.length; i<len; i++) {
-                    name = useHashPropVal ? lk[i].name.replace(/\s/g, '').toLowerCase() : lk[i].name;
-                    if(name === prop) {
-                        console.log('success!!!', lk[i]);
-                        return lk[i].plates;
-                    }
-                    console.log('continue', lk[i]);
-                }
-                return localStorage[key];
-            } else {
-                return null;
-            }
-        };
-        if(hashval && hashval !== 'restaurants') {
-            Utilities.loadView(Utilities.toCamelCase('plates'), 'scripts/controllers/' + 'plates' + '.js', optionalEvent, localData('Restaurants', 'bluecsushi', true));
-            return false;
-        }
         if(optionalEvent) {
             optionalEvent.preventDefault();
+        }
+        if(hashval && hashval !== 'restaurants') {
+            Utilities.loadView(Utilities.toCamelCase('plates'), 'scripts/controllers/' + 'plates' + '.js', optionalEvent, Utilities.loadLocalData('Restaurants', hasharr[1], true));
+            return false;
         }
         if(!(optionalPage && optionalPage !== '')) {
             // Default to restaurants view
@@ -76,7 +62,7 @@ var Utilities = {
             page = optionalPage.toLowerCase();
             window.location.hash = page + '/' + optionalEvent.currentTarget.hash.substr(1);
         }
-        Utilities.loadView(Utilities.toCamelCase(page), 'scripts/controllers/' + page + '.js', optionalEvent, localData(localStorageObj, localStorageProperty));
+        Utilities.loadView(Utilities.toCamelCase(page), 'scripts/controllers/' + page + '.js', optionalEvent, Utilities.loadLocalData(localStorageObj, localStorageProperty, true));
     },
     storeLocal: function(name, obj) {
         console.log('storing ' + name, obj);
@@ -91,6 +77,24 @@ var Utilities = {
             // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
         } else {
             alert('Sorry! No Web Storage support..');
+        }
+    },
+    loadLocalData: function(key, prop, useHashPropVal) {
+        console.log('key', key);
+        console.log('prop', prop);
+        if(localStorage && localStorage[key]) {
+            var lk = JSON.parse(localStorage[key]);
+            for(var i=0, len=lk.length; i<len; i++) {
+                name = useHashPropVal ? lk[i].name.replace(/\s/g, '').toLowerCase() : lk[i].name;
+                if(name === prop) {
+                    console.log('success!!!', lk[i]);
+                    return lk[i].plates;
+                }
+                console.log('continue', lk[i]);
+            }
+            return localStorage[key];
+        } else {
+            return null;
         }
     },
     toCamelCase: function(string) {
